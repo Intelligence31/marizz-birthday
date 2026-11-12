@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#21172d">
+<meta name="description" content="A special birthday experience awaits Mary Bitrus.">
+
+<title>For Marizz ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--bg: #21172d;
+--purple: #b99bd5;
+--peach: #f2bca9;
+--cream: #fff4ed;
+--muted: #c5b5cc;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+min-height: 100svh;
+font-family: 'DM Sans', sans-serif;
+color: var(--cream);
+background:
+radial-gradient(ellipse at 15% 15%, #684b78 0%, transparent 42%),
+radial-gradient(ellipse at 90% 85%, #704d58 0%, transparent 40%),
+var(--bg);
+display: flex;
+flex-direction: column;
+overflow-x: hidden;
+}
+
+.page {
+position: relative;
+flex: 1;
+min-height: 100svh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 65px 22px 45px;
+isolation: isolate;
+}
+
+.page::before,
+.page::after {
+content: "";
+position: absolute;
+width: 230px;
+height: 230px;
+border: 1px solid rgba(242,188,169,.15);
+border-radius: 50%;
+z-index: -1;
+pointer-events: none;
+}
+
+.page::before {
+top: -120px;
+left: -100px;
+}
+
+.page::after {
+bottom: -120px;
+right: -100px;
+}
+
+.sparkle {
+position: absolute;
+color: var(--peach);
+opacity: .6;
+animation: float 5s ease-in-out infinite;
+pointer-events: none;
+}
+
+.s1 { top: 17%; left: 12%; font-size: 19px; }
+.s2 { top: 27%; right: 12%; font-size: 14px; animation-delay: 1s; }
+.s3 { bottom: 21%; left: 17%; font-size: 13px; animation-delay: 2s; }
+.s4 { bottom: 17%; right: 15%; font-size: 21px; animation-delay: 1.5s; }
+
+.eyebrow {
+color: var(--peach);
+font-size: 10px;
+letter-spacing: 4px;
+text-transform: uppercase;
+margin-bottom: 25px;
+animation: fadeUp 1s ease both;
+}
+
+.ornament {
+color: var(--peach);
+font-size: 25px;
+margin-bottom: 17px;
+animation: fadeUp 1s .1s ease both;
+}
+
+h1 {
+font-family: 'Playfair Display', serif;
+font-weight: 400;
+font-size: clamp(54px, 13vw, 88px);
+line-height: 1.05;
+letter-spacing: -2px;
+color: var(--cream);
+animation: fadeUp 1s .2s ease both;
+}
+
+h1 span {
+display: block;
+font-style: italic;
+color: var(--peach);
+}
+
+.subtitle {
+max-width: 310px;
+margin: 22px auto 0;
+color: var(--muted);
+font-size: 13px;
+line-height: 1.9;
+font-weight: 300;
+animation: fadeUp 1s .4s ease both;
+}
+
+.divider {
+width: 55px;
+height: 1px;
+background: var(--peach);
+opacity: .6;
+margin: 36px auto;
+}
+
+.countdown-label {
+color: var(--purple);
+text-transform: uppercase;
+letter-spacing: 3px;
+font-size: 9px;
+margin-bottom: 20px;
+}
+
+.countdown {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: clamp(12px, 4vw, 25px);
+animation: fadeUp 1s .5s ease both;
+}
+
+.time-box {
+min-width: 52px;
+}
+
+.number {
+font-family: 'Playfair Display', serif;
+font-size: clamp(32px, 8vw, 48px);
+font-weight: 400;
+color: var(--cream);
+font-variant-numeric: tabular-nums;
+}
+
+.unit {
+display: block;
+font-size: 9px;
+color: var(--muted);
+text-transform: uppercase;
+letter-spacing: 2px;
+margin-top: 7px;
+}
+
+.colon {
+font-family: 'Playfair Display', serif;
+font-size: 30px;
+color: var(--peach);
+opacity: .7;
+margin-top: -18px;
+}
+
+.reveal {
+display: none;
+animation: fadeUp .8s ease both;
+}
+
+.reveal.show {
+display: block;
+}
+
+.reveal p {
+font-family: 'Playfair Display', serif;
+font-size: 22px;
+font-style: italic;
+color: var(--peach);
+margin-bottom: 22px;
+}
+
+.enter-btn {
+display: inline-block;
+padding: 15px 29px;
+color: #291c32;
+background: linear-gradient(110deg, var(--peach), #e8c8d8);
+border-radius: 40px;
+text-decoration: none;
+font-family: 'DM Sans', sans-serif;
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 1.5px;
+transition: transform .3s, box-shadow .3s;
+box-shadow: 0 8px 30px rgba(242,188,169,.15);
+}
+
+.enter-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 12px 35px rgba(242,188,169,.28);
+}
+
+.bottom-note {
+margin-top: 32px;
+color: var(--muted);
+font-size: 10px;
+letter-spacing: 1px;
+opacity: .75;
+}
+
+footer {
+text-align: center;
+padding: 18px 12px 25px;
+font-size: 10px;
+color: var(--muted);
+opacity: .8;
+}
+
+footer a {
+color: var(--peach);
+text-decoration: none;
+font-weight: 600;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-12px); }
+}
+
+@media (max-width: 380px) {
+.countdown { gap: 9px; }
+.time-box { min-width: 44px; }
+.number { font-size: 30px; }
+.colon { font-size: 23px; }
+.page { padding-inline: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+*, *::before, *::after {
+animation-duration: .01ms !important;
+transition-duration: .01ms !important;
+}
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+<span class="sparkle s1">✧</span>
+<span class="sparkle s2">✦</span>
+<span class="sparkle s3">✧</span>
+<span class="sparkle s4">✦</span>
+
+<div class="eyebrow">A little something special</div>
+
+<div class="ornament">✿</div>
+
+<h1>
+For
+<span>Marizz.</span>
+</h1>
+
+<p class="subtitle">
+Some days deserve a little more magic.
+And this one is worth waiting for.
+</p>
+
+<div class="divider"></div>
+
+<section id="countdown-section">
+<div class="countdown-label">Until your special day</div>
+
+<div class="countdown">
+<div class="time-box">
+<div class="number" id="days">00</div>
+<span class="unit">Days</span>
+</div>
+
+<span class="colon">:</span>
+
+<div class="time-box">
+<div class="number" id="hours">00</div>
+<span class="unit">Hours</span>
+</div>
+
+<span class="colon">:</span>
+
+<div class="time-box">
+<div class="number" id="minutes">00</div>
+<span class="unit">Minutes</span>
+</div>
+
+<span class="colon">:</span>
+
+<div class="time-box">
+<div class="number" id="seconds">00</div>
+<span class="unit">Seconds</span>
+</div>
+</div>
+</section>
+
+<section class="reveal" id="reveal">
+<p>Your day is finally here, Marizz.</p>
+<a href="tribute.html" class="enter-btn">
+ENTER YOUR WORLD ♡
+</a>
+</section>
+
+<div class="bottom-note" id="bottom-note">
+Made especially for a day worth celebrating.
+</div>
+
+</main>
+
+<footer>
+Made with ♥ by
+<a href="https://intelligencejr.netlify.app/"
+target="_blank" rel="noopener noreferrer">Intelligence™</a>
+</footer>
+
+<script>
+// Midnight on November 23, 2026, Nigeria time (WAT).
+const birthday = new Date("2026-11-23T00:00:00+01:00");
+
+const countdownSection = document.getElementById("countdown-section");
+const reveal = document.getElementById("reveal");
+const bottomNote = document.getElementById("bottom-note");
+
+const elements = {
+days: document.getElementById("days"),
+hours: document.getElementById("hours"),
+minutes: document.getElementById("minutes"),
+seconds: document.getElementById("seconds")
+};
+
+function updateCountdown() {
+const now = Date.now();
+const difference = birthday.getTime() - now;
+
+if (difference <= 0) {
+countdownSection.style.display = "none";
+reveal.classList.add("show");
+bottomNote.textContent = "A new chapter begins today. ♡";
+return;
+}
+
+const days = Math.floor(difference / 86400000);
+const hours = Math.floor((difference % 86400000) / 3600000);
+const minutes = Math.floor((difference % 3600000) / 60000);
+const seconds = Math.floor((difference % 60000) / 1000);
+
+elements.days.textContent = String(days).padStart(2, "0");
+elements.hours.textContent = String(hours).padStart(2, "0");
+elements.minutes.textContent = String(minutes).padStart(2, "0");
+elements.seconds.textContent = String(seconds).padStart(2, "0");
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
+
