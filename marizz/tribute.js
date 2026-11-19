@@ -1,153 +1,80 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
-/* =================================
-PHOTO GALLERY
-================================= */
+  // PHOTO GALLERIES
+  const childhoodGallery = document.getElementById("childhoodGallery");
+  const adultGallery = document.getElementById("adultGallery");
 
-const childhoodGallery =
-document.getElementById("childhoodGallery");
+  function createGallery(container, prefix, total) {
+    if (!container) return;
 
-const adultGallery =
-document.getElementById("adultGallery");
+    for (let i = 1; i <= total; i++) {
+      const image = document.createElement("img");
+      const number = String(i).padStart(2, "0");
 
+      image.src = `assets/${prefix}-${number}.jpg`;
+      image.alt = `Marizz ${prefix} photo ${i}`;
+      image.className = "gallery-photo";
+      image.loading = "lazy";
 
-function createGalleryImages(container, prefix, total) {
+      image.addEventListener("error", () => {
+        image.classList.add("image-missing");
+      });
 
-for (let i = 1; i <= total; i++) {
+      container.appendChild(image);
+    }
+  }
 
-const image = document.createElement("img");
-
-const number = String(i).padStart(2, "0");
-
-image.src = `assets/${prefix}-${number}.jpg`;
-
-image.alt = prefix === "childhood"
-? `Marizz childhood photograph ${i}`
-: `Marizz photograph ${i}`;
-
-image.className = "gallery-photo";
-
-image.loading = "lazy";
-
-image.addEventListener("error", () => {
-image.classList.add("image-missing");
-});
-
-container.appendChild(image);
-
-}
-
-}
+  createGallery(childhoodGallery, "childhood", 3);
+  createGallery(adultGallery, "adult", 16);
 
 
-createGalleryImages(
-childhoodGallery,
-"childhood",
-3
-);
+  // MUSIC PLAYER
+  const song = document.getElementById("birthdaySong");
+  const button = document.getElementById("musicButton");
+  const icon = document.getElementById("musicIcon");
 
-createGalleryImages(
-adultGallery,
-"adult",
-16
-);
+  if (!song || !button || !icon) {
+    console.error("Music player elements are missing from tribute.html");
+    return;
+  }
 
+  function updateIcon(playing) {
+    icon.textContent = playing ? "Ⅱ" : "♫";
+    button.title = playing ? "Pause music" : "Play music";
+    button.setAttribute(
+      "aria-label",
+      playing ? "Pause favourite song" : "Play favourite song"
+    );
+  }
 
-/* =================================
-BIRTHDAY MUSIC
-================================= */
+  button.addEventListener("click", async () => {
+    console.log("Music button clicked");
 
-const song =
-document.getElementById("birthdaySong");
+    try {
+      if (song.paused) {
+        await song.play();
+      } else {
+        song.pause();
+      }
+    } catch (error) {
+      console.error("Playback error:", error);
+      alert("The song could not play. Please check mushin.mp3.");
+    }
+  });
 
-const musicButton =
-document.getElementById("musicButton");
+  song.addEventListener("play", () => updateIcon(true));
+  song.addEventListener("pause", () => updateIcon(false));
 
-const musicIcon =
-document.getElementById("musicIcon");
+  song.addEventListener("error", () => {
+    console.error("Audio loading error:", song.error);
+    button.title = "Song could not be loaded";
+  });
 
-
-function updateMusicButton(isPlaying) {
-
-musicIcon.textContent = isPlaying ? "Ⅱ" : "♫";
-
-musicButton.setAttribute(
-"aria-label",
-isPlaying
-? "Pause favourite song"
-: "Play favourite song"
-);
-
-musicButton.title = isPlaying
-? "Pause music"
-: "Play music";
-
-}
-
-
-async function playSong() {
-
-try {
-
-await song.play();
-
-updateMusicButton(true);
-
-} catch (error) {
-
-// Browser may block autoplay.
-// The floating music icon remains available.
-
-updateMusicButton(false);
-
-}
-
-}
-
-
-musicButton.addEventListener("click", async () => {
-
-if (song.paused) {
-
-await playSong();
-
-} else {
-
-song.pause();
-
-updateMusicButton(false);
-
-}
+  // Attempt autoplay. Browsers may block it.
+  song.play().catch(error => {
+    console.log("Autoplay was blocked. Tap the music icon.", error);
+    updateIcon(false);
+  });
 
 });
-
-
-// Attempt to play Mushin when the birthday page opens.
-playSong();
-
-
-song.addEventListener("play", () => {
-updateMusicButton(true);
-});
-
-
-song.addEventListener("pause", () => {
-updateMusicButton(false);
-});
-
-
-song.addEventListener("error", () => {
-
-musicButton.disabled = true;
-
-musicButton.title = "Music unavailable";
-
-musicButton.setAttribute(
-"aria-label",
-"Music unavailable"
-);
-
-});
-
-});
-
