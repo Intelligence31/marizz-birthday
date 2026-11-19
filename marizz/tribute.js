@@ -1,7 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // =====================================
   // PHOTO GALLERIES
+  // =====================================
+
   const childhoodGallery = document.getElementById("childhoodGallery");
   const adultGallery = document.getElementById("adultGallery");
 
@@ -29,27 +32,38 @@ document.addEventListener("DOMContentLoaded", () => {
   createGallery(adultGallery, "adult", 16);
 
 
+  // =====================================
   // MUSIC PLAYER
+  // =====================================
+
   const song = document.getElementById("birthdaySong");
   const button = document.getElementById("musicButton");
   const icon = document.getElementById("musicIcon");
+  const musicHint = document.getElementById("musicHint");
 
   if (!song || !button || !icon) {
     console.error("Music player elements are missing from tribute.html");
     return;
   }
 
-  function updateIcon(playing) {
+  function updateMusicButton(playing) {
     icon.textContent = playing ? "Ⅱ" : "♫";
+
     button.title = playing ? "Pause music" : "Play music";
+
     button.setAttribute(
       "aria-label",
       playing ? "Pause favourite song" : "Play favourite song"
     );
   }
 
+  function hideMusicHint() {
+    musicHint?.classList.add("hidden");
+  }
+
+  // Hide the prompt when the visitor taps the music button.
   button.addEventListener("click", async () => {
-    console.log("Music button clicked");
+    hideMusicHint();
 
     try {
       if (song.paused) {
@@ -58,23 +72,30 @@ document.addEventListener("DOMContentLoaded", () => {
         song.pause();
       }
     } catch (error) {
-      console.error("Playback error:", error);
-      alert("The song could not play. Please check mushin.mp3.");
+      console.error("Music playback error:", error);
+      alert("The song could not play. Please check that mushin.mp3 is uploaded correctly.");
     }
   });
 
-  song.addEventListener("play", () => updateIcon(true));
-  song.addEventListener("pause", () => updateIcon(false));
+  // Update the icon and hide the prompt when music starts.
+  song.addEventListener("play", () => {
+    updateMusicButton(true);
+    hideMusicHint();
+  });
+
+  song.addEventListener("pause", () => {
+    updateMusicButton(false);
+  });
 
   song.addEventListener("error", () => {
     console.error("Audio loading error:", song.error);
     button.title = "Song could not be loaded";
   });
 
-  // Attempt autoplay. Browsers may block it.
-  song.play().catch(error => {
-    console.log("Autoplay was blocked. Tap the music icon.", error);
-    updateIcon(false);
+  // Attempt autoplay. iPhone and other browsers may block it.
+  song.play().catch((error) => {
+    console.log("Autoplay blocked. Visitor can tap the music button.", error);
+    updateMusicButton(false);
   });
 
 });
