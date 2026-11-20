@@ -482,4 +482,47 @@ animation-duration: .01ms !important;
 transition-duration: .01ms !important;
 }
 }
+.music-control {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.music-hint {
+  background: #fff8f2;
+  color: #70427d;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  box-shadow: 0 4px 18px rgba(60, 30, 70, 0.12);
+  animation: gentlePulse 2.5s infinite;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.music-hint.hidden {
+  opacity: 0;
+  transform: translateX(10px);
+  pointer-events: none;
+}
+
+@keyframes gentlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.75; }
+}
+
+@media (max-width: 480px) {
+  .music-control {
+    right: 14px;
+    bottom: 16px;
+  }
+
+  .music-hint {
+    font-size: 11px;
+    padding: 9px 12px;
+  }
+}
 
