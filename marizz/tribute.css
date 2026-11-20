@@ -526,3 +526,42 @@ transition-duration: .01ms !important;
   }
 }
 
+/* BIRTHDAY MESSAGE CARD */
+.birthday-message {
+  width: calc(100% - 36px);
+  max-width: 850px;
+  margin: 55px auto;
+  padding: 45px 30px;
+  background: #fffaf7;
+  border: 1px solid #ead9ed;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(83, 48, 100, 0.10);
+  text-align: center;
+}
+
+/* FINAL BIRTHDAY CARD */
+.finale-section .finale-content {
+  width: calc(100% - 36px);
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 45px 25px;
+  background: #fff5ee;
+  border: 1px solid #f0d4c8;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(83, 48, 100, 0.10);
+  text-align: center;
+}
+
+/* MOBILE SPACING */
+@media (max-width: 600px) {
+  .birthday-message {
+    padding: 35px 22px;
+    margin: 35px auto;
+  }
+
+  .finale-section .finale-content {
+    padding: 35px 20px;
+    margin: 25px auto;
+  }
+}
+
