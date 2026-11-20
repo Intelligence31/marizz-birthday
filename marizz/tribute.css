@@ -562,6 +562,29 @@ transition-duration: .01ms !important;
   .finale-section .finale-content {
     padding: 35px 20px;
     margin: 25px auto;
+    
   }
 }
+
+/* FINALE CARD */
+.finale-card {
+  width: calc(100% - 36px);
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 45px 28px;
+  background: #fff5ee;
+  border: 1px solid #f0d4c8;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(83, 48, 100, 0.10);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .finale-card {
+    padding: 35px 20px;
+    margin: 25px auto;
+  }
+}
+
+
 
