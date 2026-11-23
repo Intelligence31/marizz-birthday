@@ -568,3 +568,76 @@ blockquote {
   }
 
 }
+
+/* MARIZZ VOGUE BUSINESS SECTION */
+
+.business-section {
+  text-align: center;
+  padding: 85px 20px;
+}
+
+.business-card {
+  max-width: 520px;
+  margin: 35px auto 0;
+  padding: 40px 28px;
+  border: 1px solid rgba(157, 112, 190, 0.3);
+  border-radius: 24px;
+  background: linear-gradient(
+    145deg,
+    rgba(245, 231, 250, 0.9),
+    rgba(255, 239, 225, 0.95)
+  );
+  box-shadow: 0 15px 45px rgba(80, 45, 100, 0.08);
+}
+
+.business-icon {
+  font-size: 38px;
+  color: #8b5ca5;
+  margin-bottom: 15px;
+}
+
+.business-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  color: #50365f;
+  margin-bottom: 15px;
+}
+
+.business-card p {
+  color: #6c5b72;
+  line-height: 1.8;
+}
+
+.contact-button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: #76518c;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.contact-button:hover {
+  background: #50365f;
+  transform: translateY(-3px);
+}
+
+.business-number {
+  margin-top: 18px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .business-card {
+    padding: 32px 20px;
+  }
+
+  .business-card h3 {
+    font-size: 26px;
+  }
+}
+
