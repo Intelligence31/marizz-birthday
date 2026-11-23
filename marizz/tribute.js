@@ -1,34 +1,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  // BUSINESS INFORMATION
-  const BUSINESS = {
-    name: "Marizz Vogue",
-    description:
-      "Your destination for beautiful necklaces, eyeglasses, earrings, waist beads, jewellery and more. Discover pieces that complement your style.",
-    whatsappNumber: "2349168716136",
-    whatsappMessage:
-      "Hello Marizz Vogue! I saw your business on Marizz's birthday tribute website and would love to make an enquiry."
-  };
-
-  const businessName = document.getElementById("businessName");
-  const businessDescription = document.getElementById("businessDescription");
-  const businessContact = document.getElementById("businessContact");
-
-  if (businessName) {
-    businessName.textContent = BUSINESS.name;
-  }
-
-  if (businessDescription) {
-    businessDescription.textContent = BUSINESS.description;
-  }
-
-  if (businessContact) {
-    businessContact.href =
-      `https://wa.me/${BUSINESS.whatsappNumber}?text=${encodeURIComponent(BUSINESS.whatsappMessage)}`;
-  }
-
   // PHOTO GALLERIES
+
   function createGallery(galleryId, prefix, total) {
     const gallery = document.getElementById(galleryId);
     if (!gallery) return;
@@ -54,7 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
   createGallery("childhoodGallery", "childhood", 3);
   createGallery("adultGallery", "adult", 16);
 
-  // CELEBRATION ANIMATION
+
+  // BIRTHDAY ENTRANCE CELEBRATION
+
   function startCelebration() {
     const layer = document.getElementById("celebrationLayer");
 
@@ -93,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startCelebration();
 
+
   // MUSIC PLAYER
+
   const musicButton = document.getElementById("musicButton");
   const musicIcon = document.getElementById("musicIcon");
   const musicHint = document.getElementById("musicHint");
@@ -139,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Browsers may require a tap before music can play.
+  // Browsers may block autoplay until the visitor interacts.
   playBirthdayMusic();
 
   birthdayMusic.addEventListener("ended", () => {
