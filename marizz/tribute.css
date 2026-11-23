@@ -641,3 +641,50 @@ blockquote {
   }
 }
 
+/* FIX PHOTO GALLERY IMAGE SIZES */
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 100%;
+  margin: 25px auto;
+}
+
+.photo-gallery img {
+  display: block;
+  width: 100%;
+  height: 230px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+}
+
+/* Adult gallery */
+.adult-gallery {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Childhood gallery */
+.childhood-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .photo-gallery,
+  .adult-gallery,
+  .childhood-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .photo-gallery img {
+    height: 165px;
+    border-radius: 10px;
+  }
+}
+
+
